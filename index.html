@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeoAcademy 2050</title>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
+  <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Foldit:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: #000000ea;
+      background-size: 600% 600%;
+      animation: spaceFlow 60s ease infinite;
+      color: #ffffff;
+      padding-top: 80px;
+      overflow-x: hidden;
+      text-align: center;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    spline-viewer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      color: white;
+      text-align: center;
+      padding-top: 20vh;
+    }
+
+    @keyframes spaceFlow {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 999;
+      box-shadow: 0 0 10px #00f2ff;
+    }
+
+    nav a {
+      color: #00f2ff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #00f2ff;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    nav a:hover {
+      color: #0ff;
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: #00f2ff;
+      text-shadow: 0 0 15px #00f2ff, 0 0 25px #0ff;
+      animation: flicker 3s infinite alternate;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #ebc0ff;
+    }
+
+    @keyframes flicker {
+      0% {opacity: 1;}
+      50% {opacity: 0.85;}
+      100% {opacity: 1;}
+    }
+
+    .section-heading {
+      text-align: center;
+      font-size: 2.5rem;
+      color:  #09A6F3;
+      margin-top: 4rem;
+      text-shadow: 0 0 10px #000000, 0 0 20px rgba(0, 255, 213, 0.659);
+      font-size: clamp(2.5rem, 0.7179487179487178rem + 5.47008547008547vw, 4rem);
+    }
+
+    .grid, .mentor-grid, .achievement-grid, .faq-grid, #testimonials {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      margin: 2rem;
+      animation: fadeIn 3s ease-in;
+    }
+
+    .icon, .mentor-avatar {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {transform: scale(1); opacity: 1;}
+      50% {transform: scale(1.1); opacity: 0.8;}
+    }
+
+    .faq-question {
+      font-weight: bold;
+      color: #00f2ff;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-answer {
+      color: #ccc;
+    }
+
+    #testimonials-heading {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #00f2ff;
+      margin-top: 4rem;
+      text-shadow: 0 0 20px #00f2ff;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 1rem;
+      text-align: center;
+      color: #00f2ff;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+
+    .container {
+      width: 80%;
+      max-width: 700px;
+      text-align: center;
+    }
+
+    header {
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      color: #4c6ef5;
+      font-size: 2.5rem;
+    }
+
+    .search-section {
+      margin-bottom: 2rem;
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+    }
+
+    .search-section input {
+      flex-grow: 1; 
+      padding: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-right: 10px;
+      font-size: 1rem;
+    }
+
+    .search-section button {
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      background-color: #2e2e45;
+      color: white;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .search-section button:hover {
+      background-color: #6d7076;
+    }
+
+    .course-results {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .course {
+      background-color: #000000;
+      color: #00f2ff;
+      border-radius: 10px;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      transition: transform 0.3s ease;
+      width: 700px;
+      align-self: center;
+    }
+
+    .course:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #dream-filter-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .filter-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    input {
+      padding: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+
+    .sample-text {
+      color:rgba(0, 255, 123, 0.804);
+    }
+
+    .tips-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .tip {
+      background-color: #414343;
+      color: white;
+      margin: 60px;
+      padding: 25px;
+      border-radius: 8px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      position: relative;
+      max-width: 300px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .tip:hover {
+      transform: translateY(-5px);
+    }
+
+    .dropdown-content {
+      opacity: 0;
+      visibility: hidden;
+      background-color: rgb(0, 0, 0);
+      color: cyan;
+      padding: 10px;
+      border-radius: 8px;
+      position: absolute;
+      top: 100%; 
+      left: 0;
+      width: 100%;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+      margin-top: 10px;
+    }
+
+
+    .tip:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .video-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    #videos h2, #videos h2 + h2 {
+      text-align: center;
+    }
+
+    #video {
+      position: absolute;
+      opacity: 0.9;
+    }
+
+    #videos{
+      padding: 100px;
+      background-size: auto;
+      background-repeat: no-repeat;
+    }
+
+    #videos > h2{
+      color: black;
+    }
+
+    .video-container > video{
+      border-radius: 20px;
+      transition: transform 0.5s;
+    }
+
+    .vid{
+      border-radius: 30px;
+      transition: transform 0.5s;
+      padding-right: 40px;
+    }
+
+    .vid:hover{
+      transform: scale(1.1);
+    }
+
+    .anicard, .card, .mentor-card, .achievement-card, .faq-card{
+      margin: 0 auto;
+      padding: 1.5rem;
+      width: 200px;
+      background: #1c1f2b;
+      text-align: center;
+      border-radius: 10px;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 3s ease-in;
+    }
+
+    .anicard:hover,.anicard:hover, .card:hover, .mentor-card:hover, .achievement-card:hover, .faq-card:hover{
+      box-shadow: 0 0 20px #00f2ff;
+    }
+
+    @property --angle{
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    .anicard::after, .anicard::before{
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-image: conic-gradient(from var(--angle), #07C8F9, #09A6F3, #0A85ED, #0C63E7, #0D41E1);
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      z-index: -1;
+      padding: 3px;
+      border-radius: 10px;
+      animation: 3s spin linear infinite;
+    }
+
+    .card::after, .card::before{
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-image: conic-gradient(from var(--angle), #7400B8, #6930C3, #5E60CE, #5390D9, #4EA8DE, #48BFE3, #56CFE1, #64DFDF, #72EFDD, #80FFDB);
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      z-index: -1;
+      padding: 3px;
+      border-radius: 10px;
+      animation: 3s spin linear infinite;
+    }
+
+    .mentor-card::after, .mentor-card::before{
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-image: conic-gradient(from var(--angle), #D9ED92, #B5E48C, #99D98C, #76C893, #52B69A, #34A0A4, #168AAD, #1A759F, #1E6091, #184E77);
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      z-index: -1;
+      padding: 3px;
+      border-radius: 10px;
+      animation: 3s spin linear infinite;
+    }
+
+    .achievement-card::after, .achievement-card::before{
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-image: conic-gradient(from var(--angle), #03045E, #023E8A, #0077B6, #0096C7, #00B4D8, #48CAE4, #90E0EF, #ADE8F4, #CAF0F8);
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      z-index: -1;
+      padding: 3px;
+      border-radius: 10px;
+      animation: 3s spin linear infinite;
+    }
+
+    .faq-card::after, .faq-card::before{
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-image: conic-gradient(from var(--angle), #8895B3, #8E94F2, #9FA0FF, #BBADFF, #DAB6FC);
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      z-index: -1;
+      padding: 3px;
+      border-radius: 10px;
+      animation: 3s spin linear infinite;
+    }
+
+    .anicard::before, .card::before, .mentor-card::before, .achievement-card::before, .faq-card::before{
+      filter: blur(1.5rem);
+      opacity: 0.5;
+    }
+
+    @keyframes spin{
+      from{
+        --angle: 0deg;
+      }
+      to{
+        --angle: 360deg;
+      }
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    *{
+      margin: 0;
+      padding: 0;
+    }
+
+    .socials-container{
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .socials-container a{
+      background-color: white;
+      padding: 1em;
+      border-radius: 50%;
+      height: 64px;
+      width: 64px;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .socials-container a svg{
+      height: 32px;
+    }
+
+    .socials-container a::before{
+      content: attr(data-social);
+      position: absolute;
+      background-color: var(--accent-color);
+      color: white;
+      text-decoration: none;
+      padding: 0.5em 1em;
+      border-radius: 100px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+      transform: translateY(-30px) rotate(25deg);
+      opacity: 0;
+      transition: 200ms cubic-bezier(.42,0,.44,1.68);
+    }
+
+    .socials-container a:hover{
+      background-color: var(--accent-color);
+      fill: white;
+    }
+
+    .socials-container a::after{
+      content: '';
+      position: absolute;
+      height: 0;
+      width: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 10px solid var(--accent-color);
+      transform: translateY(0) rotate(25deg);
+      opacity: 0;
+      transition: 200ms cubic-bezier(.42,0,.44,1.68);
+    }
+
+    .socials-container a:hover::before{
+      transform: translateY(-65px) rotate(0);
+      opacity: 1;
+    }
+
+    .socials-container a:hover::after{
+      transform: translateY(-42px) rotate(0);
+      opacity: 1;
+    }
+
+    .button {
+      margin: 100px;
+      padding: 15px 40px;
+      border: none;
+      outline: none;
+      color: #FFF;
+      cursor: pointer;
+      position: relative;
+      z-index: 0;
+      border-radius: 12px;
+    }
+
+    .button::after {
+      content: "";
+      z-index: -1;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #333;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+    }
+
+    .button::before {
+      content: "";
+      background: linear-gradient(
+        45deg,
+        #FF0000, #FF7300, #FFFB00, #48FF00,
+        #00FFD5, #002BFF, #FF00C8, #FF0000
+      );
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      background-size: 600%;
+      z-index: -1;
+      width: calc(100% + 4px);
+      height:  calc(100% + 4px);
+      filter: blur(8px);
+      animation: glowing 20s linear infinite;
+      transition: opacity .3s ease-in-out;
+      border-radius: 10px;
+      opacity: 0;
+    }
+
+    @keyframes glowing {
+      0% {background-position: 0 0;}
+      50% {background-position: 400% 0;}
+      100% {background-position: 0 0;}
+    }
+
+    .button:hover::before {
+      opacity: 1;
+    }
+
+    .button:active:after {
+      background: transparent;
+    }
+
+    .button:active {
+      color: #000;
+      font-weight: bold;
+    }
+
+    main{
+        width: min(1400px, 100vw);
+        margin: auto;
+        padding: 20px;
+    }
+
+    header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    header img{
+        height: 40px;
+        background-color: #000;
+    }
+
+    .banner .content{
+        font-family: "Odibee Sans", sans-serif;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .banner .content h1{
+        font-size: 17em;
+    }
+
+    .banner .content .right{
+        text-align: right;
+        transform: translateY(-30px);
+    }
+
+    .banner .content .right h2{
+        font-size: 7em;
+        font-weight: 200;
+    }
+
+    .banner .image{
+        width: 100%;
+        height: 600px;
+        background-image: url(background.jpg);
+        background-size: cover;
+        position: relative;
+    }
+
+    .banner .image img{
+        position: absolute;
+        height: 130%;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0px;
+    }
+
+    .gridd figure img{
+        width: 50%;
+
+    }
+
+    .gridd{
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(var(--row), 100px);
+        margin-top: 50px;
+        gap: 50px;
+    }
+
+    .gridd-1 figure:nth-child(1){
+        grid-column: 2 / 6;
+        grid-row: 1;
+    }
+
+    .gridd-1 figure:nth-child(2){
+        grid-column: 3 / 5;
+        grid-row: 1;
+    }
+
+    .gridd-1 h2:nth-child(3){
+        font-size: 7em;
+        grid-column: 1 / 7;
+        text-align: center;
+        grid-row: 5;
+        z-index: 1;
+    }
+
+    .gridd-1{
+        --row: 2;
+    }
+
+    .gridd-2{
+        --row: 8;
+        font-size: 1.7em;
+    }
+
+    .gridd-2 div:nth-child(1){
+        grid-column: 1 / 4;
+        grid-row: 3;
+    }
+
+    .gridd-2 div:nth-child(2){
+        grid-column: 4 / 7;
+        grid-row: 1;
+    }
+
+    .gridd-2 div:nth-child(3){
+        grid-column: 4 / 7;
+        grid-row: 4;
+    }
+
+    .gridd-2 div:nth-child(4){
+        grid-column: 1 / 4;
+        grid-row: 6;
+    }
+
+    .gridd-3{
+        --row: 6;
+        font-size: 10em;
+    }
+
+    .gridd-3 div{
+        grid-column: 2/ 6;
+        text-wrap: nowrap;
+    }
+
+    .gridd-3 div:nth-child(even){
+        text-align: right;
+    }
+
+    .gridd-3 div:nth-child(5){
+        grid-column: 1/ 6;
+    }
+
+    .gridd-3 div:nth-child(4){
+        grid-column: 1/ 7;
+    }
+
+    .gridd-5{
+        --row: 5;
+        font-size:1.7em;
+    }
+
+    .gridd-5 div:nth-child(1){
+        grid-row: 1;
+        grid-column: 1 / 3;
+    }
+
+    .gridd-5 div:nth-child(2){
+        grid-row: 2;
+        grid-column: 3 / 5;
+    }
+
+    .gridd-5 div:nth-child(3){
+        grid-row: 3;
+        grid-column: 5 / 7;
+    }
+
+    .gridd-5 div:nth-child(4){
+        grid-row: 1;
+        grid-column: 5 / 7;
+    }
+
+    @media screen and (max-width: 1023px){
+        header img{
+            height: 2em;
+        }
+        .banner .content h1{
+            font-size: 12em;
+        }
+        .banner .content .right{
+            transform: none;
+        }
+        .gridd-2 div:nth-child(1){
+            grid-row: 2;
+        }
+        .gridd-2 div:nth-child(3){
+            grid-row: 6;
+        }
+        .gridd-2 div:nth-child(4){
+            grid-row: 5;
+        }
+        .gridd-3{
+            font-size: 5em;
+            line-height: 1em;
+        }
+    }
+
+
+    @media screen and (max-width: 1023px){
+        header img{
+            height: unset;
+            width: 100%;
+        }
+        .banner .content h1{
+            font-size: 7em;
+        }
+        .banner .content{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .banner{
+            overflow: hidden;
+        }
+        .gridd-1 h2:nth-child(3){
+            font-size: 3em;
+        }
+        .gridd{
+            display: block;
+        }
+        .gridd-3{
+            font-size: 4em;
+            display: block;
+            margin-bottom: 100px;
+        }
+    }
+
+    .autoRotate{
+        animation: autoRotateAnimation;
+        animation-timeline: view();
+    }
+
+    @keyframes autoRotateAnimation{
+        from{
+            transform: rotate(0deg);
+        }
+        to{
+            transform: rotate(360deg);
+        }
+    }
+
+    .autoShow{
+        animation: autoShowAnimation both;
+        animation-timeline: view(70% 5%);
+
+    }
+
+    @keyframes autoShowAnimation{
+        from{
+            opacity: 0;
+            transform: translateY(200px) scale(0.3);
+        }to{
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .autoBLur{
+        animation: autoBLurAnimation linear both;
+        animation-timeline: view();
+    }
+
+    @keyframes autoBLurAnimation{
+        0%{
+            filter: blur(40px);
+        }
+        45%, 55%{
+            filter: blur(0px);
+        }
+        100%{
+            filter: blur(40px);
+        }
+    }
+
+    .ebanner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    z-index: -1;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.mask-layer {
+    position: absolute;
+    inset: 0;
+    background-image: url(coverpg.jpg);
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    /* No mask by default */
+}
+
+.mask-on {
+    mask-image: url(effect.gif);
+    mask-size: cover;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-mode: alpha;
+    /* WebKit support */
+    -webkit-mask-image: url(effect.gif);
+    -webkit-mask-size: cover;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-mode: alpha;
+}
+
+.ebanner .content .title {
+    font-family: 'Hallowed Grounds', sans-serif;
+    font-size: 9em;
+    color: #09A6F3;
+    margin-top: 4rem;
+    font-weight: 900;
+    text-shadow:
+        -2px -2px 0 #000,
+         2px -2px 0 #000,
+        -2px  2px 0 #000,
+         2px  2px 0 #000,
+        -3px  0px 0 #000,
+         3px  0px 0 #000,
+         0px -3px 0 #000,
+         0px  3px 0 #000;
+}
+    .box{
+      position: relative;
+      justify-self: center;
+      width: 27rem;
+      height: 27rem;
+      cursor: pointer;
+    }
+
+    .bg{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-image: url("./headbg.jpg");
+      background-size: cover;
+      transition: 1s;
+      border-radius: 10px;
+      box-shadow: 0 10px 10px;
+    }
+
+    .box:hover .bg{
+        transform: perspective(20px) rotateX(2deg) translateY(-50px);
+    }
+
+    .headphone{
+        position: absolute;
+        width: 25rem ;
+        height: 25rem;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        animation: gifAnimation 0.8s linear infinite;
+        animation-play-state: paused!important;
+        transition: 1s;
+    }
+
+    .box:hover .headphone{
+        animation-play-state:running!important;
+        transform: translateY(-200px) translateX(-10px);
+    }
+
+    @keyframes gifAnimation{
+        from{
+            background-image: url("./headphones.png");
+        }
+        to{
+            background-image: url("./headflip.png");
+        }
+    }
+
+    .splash {
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000000000;
+      animation: fadeOut 1s ease forwards;
+      animation-delay: 5.8s;
+    }
+
+    .line {
+      position: absolute;
+      height: 2px;
+      background: white;
+      /* width: 0; */
+      animation: expandLine 0.7s ease forwards,
+        contractLine 0.7s ease forwards 5s;
+    }
+
+    .splash-text {
+      overflow: hidden;
+      position: relative;
+      color: white;
+      font-family: "Circular", sans-serif;
+      font-size: 2rem;
+      font-size: clamp(1rem, -0.056rem + 4.507vw, 3rem);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 50px;
+    }
+
+    .text-1 {
+      animation: fadeUpIn 0.7s ease forwards 0.7s,
+        fadeUpOut 0.7s ease forwards 5s;
+    }
+
+    .text-2 {
+      animation: fadeUpIn 0.7s ease forwards 2s,
+        fadeUpOut 0.7s ease forwards 5s;
+    }
+
+    .text-3 {
+      animation: fadeUpIn 0.7s ease forwards 3.3s,
+        fadeUpOut 0.7s ease forwards 5s;
+    }
+
+    .splash-text span {
+      transform: translateY(20px);
+      opacity: 0;
+      display: block;
+      text-align: center;
+    }
+
+    @keyframes expandLine {
+      from {
+        width: 0;
+      }
+      to {
+        width: 60%;
+      }
+    }
+
+    @keyframes contractLine {
+      from {
+        width: 60%;
+      }
+      to {
+        width: 0;
+      }
+    }
+
+    @keyframes fadeUpIn {
+      from {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeUpOut {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-40px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    .rotating{
+      background-color: #D2D2D2;
+        background-image:
+        repeating-linear-gradient(
+            to right, transparent 0 100px,
+            #25283b22 100px 101px
+        ),
+        repeating-linear-gradient(
+            to bottom, transparent 0 100px,
+            #25283b22 100px 101px
+        );
+    }
+
+    .rotating::before{
+      position: absolute;
+      width: min(1400px, 90vw);
+      top: 10%;
+      left: 50%;
+      height: 90%;
+      transform: translateX(-50%);
+      content: '';
+      background-image: url(images/bg.png);
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: top center;
+      pointer-events: none;
+    }
+
+    .cbanner{
+      width: 100%;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cbanner .slider{
+        position: absolute;
+        width: 200px;
+        height: 250px;
+        top: 10%;
+        left: calc(50% - 100px);
+        transform-style: preserve-3d;
+        transform: perspective(1000px);
+        animation: autoRun 20s linear infinite;
+        z-index: 2;
+    }
+
+    @keyframes autoRun{
+        from{
+            transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+        }to{
+            transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+        }
+    }
+
+    .cbanner .slider .citem{
+        position: absolute;
+        inset: 0 0 0 0;
+        transform: 
+            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+            translateZ(550px);
+    }
+
+    .cbanner .slider .citem img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .cbanner .ccontent{
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(1400px, 100vw);
+        height: max-content;
+        padding-bottom: 100px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1;
+    }
+
+    .cbanner .ccontent h1{
+        font-family: 'ICA Rubrik';
+        font-size: 16em;
+        line-height: 1em;
+        color: #25283B;
+        position: relative;
+    }
+
+    .cbanner .ccontent h1::after{
+        position: absolute;
+        inset: 0 0 0 0;
+        content: attr(data-content);
+        z-index: 2;
+        -webkit-text-stroke: 2px #d2d2d2;
+        color: transparent;
+    }
+
+    .cbanner .ccontent .model{
+        background-image: url(./robot2.png);
+        width: 100%;
+        height: 75vh;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-size: auto 130%;
+        background-repeat: no-repeat;
+        background-position: top center;
+        z-index: 1;
+    }
+
+    @media screen and (max-width: 1023px) {
+        .cbanner .slider{
+            width: 160px;
+            height: 200px;
+            left: calc(50% - 80px);
+        }
+        .cbanner .slider .citem{
+            transform: 
+                rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+                translateZ(300px);
+        }
+        .cbanner .ccontent h1{
+            text-align: center;
+            width: 100%;
+            text-shadow: 0 10px 20px #000;
+            font-size: 7em;
+        }
+
+    }
+
+    @media screen and (max-width: 767px) {
+        .cbanner .slider{
+            width: 100px;
+            height: 150px;
+            left: calc(50% - 50px);
+        }
+        .cbanner .slider .citem{
+            transform: 
+                rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+                translateZ(180px);
+        }
+        .cbanner .ccontent h1{
+            font-size: 5em;
+        }
+    }
+
+    .cursor {
+    width: 20px;
+    height: 20px;
+    border: 1px solid cyan;
+    border-radius: 50%;
+    position: absolute;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+    animation: cursorAnim .5s infinite alternate;
+    pointer-events: none;
+  }
+
+    .cursor::after {
+        content: "";
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        border: 8px solid gray;
+        border-radius: 50%;
+        opacity: .5;
+        top: -8px;
+        left: -8px;
+        animation: cursorAnim2 .5s infinite alternate;
+    }
+
+    @keyframes cursorAnim {
+        from {
+            transform: scale(1);
+        }
+        to {
+            transform: scale(.7);
+        }
+    }
+
+    @keyframes cursorAnim2 {
+        from {
+            transform: scale(1);
+        }
+        to {
+            transform: scale(.4);
+        }
+    }
+
+    @keyframes cursorAnim3 {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(3);
+        }
+        100% {
+            transform: scale(1);
+            opacity: 0;
+        }
+    }
+
+    .expand {
+        animation: cursorAnim3 .5s forwards;
+        border: 1px solid red;
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <div class="cursor"></div>
+
+  <div class="splash">
+    <div class="line"></div>
+    <div class="splash-text">
+        <span class="text-1">Experience</span>
+        <span class="text-2">Excellence in Education</span>
+        <span class="text-3">with us.</span>
+    </div>
+  </div>
+
+
+  <spline-viewer url="https://prod.spline.design/l9nuHGXAnOA9IS7c/scene.splinecode"></spline-viewer>
+
+  <div class="ebanner">
+    <div class="mask-layer"></div>
+    <div class="content">
+      <div class="title">NeoAcademy</div>
+    </div>
+  </div>
+  <br><br><br>
+
+  <!-- Front page -->
+  <main>
+      <section class="banner">
+          <div class="content">
+              <h1 class="left">2050</h1>
+              <div class="right">
+                  <h2>NeoAcademy</h2>
+                  <p>School of 2050</p>
+                  <p>Shaping the future with quantum classrooms, AI mentors, 
+                      <br>and interstellar learning hubs.</p>
+              </div>
+              <div class="image">
+                  <img src="VR.png" alt="">
+              </div>
+          </div>
+      </section>
+
+      <section class="gridd gridd-1">
+          <figure>
+              <img src="eye.png" alt="" class="autoRotate">
+          </figure>
+          <h2 class="autoShow">Education</h2>
+      </section>
+
+      <section class="gridd gridd-2">
+          <div class="autoShow">
+              <figure>
+                  <img src="barcode.png" alt="">
+              </figure>
+              <p>
+                NeoAcademy 2050 blends nature and tech, with green campuses, AI-guided spaces, and holographic classrooms that inspire creativity and connection.
+              </p>
+          </div>
+          <div class="autoShow">
+            NeoAcademy 2050 is a cutting-edge educational institution designed to prepare students for a rapidly evolving, tech-driven world. It blends advanced technology, personalized learning, and global connectivity to create a truly transformative learning experience.
+          </div>
+
+          <div class="autoShow">
+              <figure>
+                  <img src="robot.png" alt="">
+              </figure>
+              <p>
+                In NeoAcademy 2050, AI robots teach children by adapting lessons to each student’s pace, interests, and emotions. They use voice, visuals, and holograms to explain concepts interactively, making learning fun, personal, and deeply engaging.
+              </p>
+          </div>
+          <div class="autoShow">
+              <figure>
+                  <img src="cap.png" alt="">
+              </figure>
+          </div>
+      </section><br><br><br><br>
+
+
+
+      <!-- Rotating cards -->
+      <div class="cbanner">
+        <div class="slider" style="--quantity: 10">
+            <div class="citem" style="--position: 1"><img src="c1.jpeg" alt="1"></div>
+            <div class="citem" style="--position: 2"><img src="c2.jpeg" alt="2"></div>
+            <div class="citem" style="--position: 3"><img src="c3.jpeg" alt="3"></div>
+            <div class="citem" style="--position: 4"><img src="c4.jpeg" alt="4"></div>
+            <div class="citem" style="--position: 5"><img src="c5.jpg" alt="5"></div>
+            <div class="citem" style="--position: 6"><img src="c6.jpg" alt="6"></div>
+            <div class="citem" style="--position: 7"><img src="c7.jpeg" alt="7"></div>
+            <div class="citem" style="--position: 8"><img src="c8.jpeg" alt="8"></div>
+            <div class="citem" style="--position: 9"><img src="c9.jpg" alt="9"></div>
+            <div class="citem" style="--position: 10"><img src="c10.jpeg" alt="10"></div>
+        </div>
+        <div class="ccontent">
+            <h1 data-content="2050">
+              <b>2050</b>
+            </h1>
+            <div class="model"></div>
+        </div>
+    </div><br><br><br>
+
+
+
+
+      <section class="gridd gridd-3">
+          <div class="autoBLur">INNOVATE</div>
+          <div class="autoBLur">EXPLORE</div>
+          <div class="autoBLur">LEARN</div>
+          <div class="autoBLur">CONNECT</div>
+          <div class="autoBLur">EVOLVE</div>
+      </section>
+    </main>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#features">Features</a>
+    <a href="#mentors">Mentors</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#testimonial">Testimonials</a>
+    <a href="#faq">FAQ</a>
+    <a href="#qualities">Qualities</a>
+    <a href="#dream-filter-container">Course FInder</a>
+    <a href="login.html">SignIn</a>
+
+  </nav>
+
+  <br>
+  <br>
+
+  <!-- Home Features Section -->
+  <main class="grid">
+    <div class="card">
+      <div class="icon">🤖</div>
+      <h2><b>AI-Powered Learning</b></h2>
+      <p><i>Every student is matched with an AI mentor that adapts to their learning style, goals, and passions</i>.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🚀</div>
+      <h2>Virtual Field Trips</h2>
+      <p>Travel the universe through immersive VR simulations — from ancient Earth to distant galaxies.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🏫</div>
+      <h2>Smart Campuses</h2>
+      <p>Eco-friendly campuses powered by renewable energy and equipped with robotics, drones, and nano-tech labs.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🧬</div>
+      <h2>Bio-Cyber Learning Labs</h2>
+      <p>Cutting-edge laboratories combining biology and cybernetics to create the innovators of tomorrow.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔮</div>
+      <h2>Fully Decentralized Hubs</h2>
+      <p>Students can attend classes from anywhere in real-time via quantum presence or digital twins.</p>
+    </div>
+  </main>
+
+  <!--headphones-->
+  <br><br><br><br><br><br>
+  <div class="box">
+    <div class="bg"></div>
+    <div class="headphone"></div>
+  </div>
+  <br>
+
+  <!-- Proper Features Section -->
+  <h2 class="section-heading" id="features"> <br><br> Pillars of Our Futuristic Educational Ecosystem </h2><br>
+  <main class="grid" id="features">
+    <div class="anicard">
+      <div class="icon">💡</div>
+      <h2>Soulprint Archive</h2>
+      <p>Store, back up, and replay earlier versions of your consciousness for self-reflection.</p>
+    </div>
+    <div class="anicard">
+      <div class="icon">♾️</div>
+      <h2>Infinity Hallway</h2>
+      <p>A hallway to simulated worlds in which paradoxes instruct.</p>
+    </div>
+    <div class="anicard">
+      <div class="icon">🎭</div>
+      <h2>Mood-DNA Blenders</h2>
+      <p>Blend your feelings with artificial enzymes to intensify learning.</p>
+    </div>
+    <div class="anicard">
+      <div class="icon">💭</div>
+      <h2>Memory Sculpting</h2>
+      <p>Rewrite painful or dull memories into potent learning experiences.</p>
+    </div>
+    <div class="anicard">
+      <div class="icon">🤵</div>
+      <h2>Avatar Fusion Pods</h2>
+      <p>Blend with your computer avatar to achieve temporary super-learning states.</p>
+    </div>
+  </main><br>
+  
+
+  <!-- AI Mentors Section -->
+  <h2 class="section-heading" id="mentors"> <br><br> Cognitive AI Facilitators Class of 2050</h2><br>
+  <div class="mentor-grid">
+    <div class="mentor-card">
+      <div class="mentor-avatar">🧠</div>
+      <h3>Mentor Nova</h3>
+      <p>Specializes in multiverse theory, quantum computing, and astrophysics.</p>
+    </div>
+    <div class="mentor-card">
+      <div class="mentor-avatar">🧬</div>
+      <h3>Mentor BioSynth</h3>
+      <p>Genetic engineering, bionics, and synthetic life design expert.</p>
+    </div>
+    <div class="mentor-card">
+      <div class="mentor-avatar">🛸</div>
+      <h3>Mentor Xeno</h3>
+      <p>Alien linguistics and xenoculture fluent. Interstellar diplomacy tutor.</p>
+    </div>
+    <div class="mentor-card">
+      <div class="mentor-avatar">🧙</div>
+      <h3>Mentor Kita</h3>
+      <p>Master instrument wizard with expertise in Asteriod rythm using Saturn's rings.</p>
+    </div>
+    <div class="mentor-card">
+      <div class="mentor-avatar">🎮</div>
+      <h3>Mentor Nexi</h3>
+      <p>A lively and adventurous AI that makes STEM fun through gamified experiments.</p>
+    </div>
+    <div class="mentor-card">
+      <div class="mentor-avatar">👾</div>
+      <h3>Mentor Glitch</h3>
+      <p>A glitching, broken AI who converts failure and chaos into exceptional learning experiences.</p>
+    </div>
+    <div class="mentor-card">
+      <div class="mentor-avatar">🦇</div>
+      <h3>Mentor Vanta</h3>
+      <p>A tutor of silence and mystery who conveys truth through absence and shadow.</p>
+    </div>
+    <div class="mentor-card">
+      <div class="mentor-avatar">👀</div>
+      <h3>Mentor Mirage</h3>
+      <p>A morphing mentor who turns into whatever your unconscious mind requires you to know.</p>
+    </div>
+    <div class="mentor-card">
+      <div class="mentor-avatar">🕯️</div>
+      <h3>Mentor Nulla</h3>
+      <p>A null entity that erases facts from your mind to challenge whether you really do know them.</p>
+    </div>
+    <div class="mentor-card">
+      <div class="mentor-avatar">🗡️</div>
+      <h3>Mentor Kraan</h3>
+      <p>A ferocious AI warlord who conditions you with virtual doomsday training sessions and survival reasoning.</p>
+    </div>
+  </div>
+
+  <!-- Achievements Section -->
+  <h2 class="section-heading" id="achievements"> <br><br> Honor Records of Our Synaptic Learning System</h2><br>
+  <div class="achievement-grid">
+    <div class="achievement-card">
+      <h3>🏆 Global EdTech Award 2049</h3>
+      <p>Awarded the most innovative learning center in the Earth and Mars colonies.</p>
+    </div>
+    <div class="achievement-card">
+      <h3>📡 Quantum Broadcast</h3>
+      <p>First to transmit real-time quantum lessons throughout the galaxy via QNet 7.0.</p>
+    </div>
+    <div class="achievement-card">
+      <h3>🎓 98% Launch Rate</h3>
+      <p>Our graduates begin blazing careers within 2 weeks after graduation — on Earth or elsewhere.</p>
+    </div>
+    <div class="achievement-card">
+      <h3>🌐 Neural Access Certified</h3>
+      <p>Quickest brain-to-net speeds on Earth.</p>
+    </div>
+    <div class="achievement-card">
+      <h3>🧑‍🔬️ Quantum Campus Award</h3>
+      <p>First to construct labs across layered realities.</p>
+    </div>
+  </div>
+
+  <!-- Testimonials Heading -->
+  <h2 class="section-heading" id="testimonial"> <br><br> Chrono-Feedback from Alumni and Entities</h2><br>
+  <div id="testimonials">
+    <div class="card">
+      <p>"NeoAcademy opened the stars for me. Now I’m working on Saturn’s moon base!" — <strong>Juno Vega</strong></p>
+    </div>
+    <div class="card">
+      <p>"My AI mentor helped me develop the first AI-flora hybrid. Thank you!" — <strong>Dr. Zell Rami</strong></p>
+    </div>
+    <div class="card">
+      <p>"I never thought learning quantum art could be this immersive!" — <strong>Luka Tera</strong></p>
+    </div>
+    <div class="card">
+      <p>"Every lesson feels like a new adventure in a world beyond imagination." — <strong>Zara Flux</strong></p>
+    </div>
+    <div class="card">
+      <p>"From navigating dreams to time travel, this school offers perfect education." — <strong>Mira Solis</strong></p>
+    </div>
+    <div class="card">
+      <p>"At this school, every day is a journey into the unknown." — <strong>Juno Xara</strong></p>
+    </div>
+    <div class="card">
+      <p>"Graduating early? Absolutely possible when you can learn at the speed of thought!" — <strong>Zane Triox</strong></p>
+    </div>
+    <div class="card">
+      <p>"We built a civilization on Mars — and that was just Monday." — <strong>Lex Ori</strong></p>
+    </div>
+    <div class="card">
+      <p>"Joined as a student, evolved as a multidimensional being." — <strong>Vae Drin</strong></p>
+    </div>
+    <div class="card">
+      <p>"I learned more in one week here than a decade anywhere else." — <strong>Mio Flux</strong></p>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <h2 class="section-heading" id="faq"> <br><br> Common Cognitive Inquiries</h2><br>
+  <div class="faq-grid">
+    <div class="faq-card">
+      <div class="faq-question">🚀 Can I enroll from another planet?</div>
+      <div class="faq-answer">Yes! NeoAcademy operates across Earth, Mars, Luna, and orbital stations.</div>
+    </div>
+    <div class="faq-card">
+      <div class="faq-question">🤖 Are the AI mentors ethical?</div>
+      <div class="faq-answer">All mentors follow the Interstellar Ethical AI Charter (IEAIC-2048).</div>
+    </div>
+    <div class="faq-card">
+      <div class="faq-question">🧠 Is VR gear required by all?</div>
+      <div class="faq-answer">Not strictly. Neural-link or holo-interface access is available as well.</div>
+    </div>
+    <div class="faq-card">
+      <div class="faq-question">👨🏻‍🏫 Are physical classrooms still used?</div>
+      <div class="faq-answer">Dynamic, shape-shifting classrooms are used for immersive learning.</div>
+    </div>
+    <div class="faq-card">
+      <div class="faq-question">📝 What replaces traditional homework?</div>
+      <div class="faq-answer">Interactive simulations and quantum puzzles.</div>
+    </div>
+    <div class="faq-card">
+      <div class="faq-question">🧘 How is mental health supported?</div>
+      <div class="faq-answer">Through AI companions providing therapy and emotional support.</div>
+    </div>
+    <div class="faq-card">
+      <div class="faq-question">👨‍👩‍👧 Can parents monitor their child's progress?</div>
+      <div class="faq-answer">Limited insights through Transparency Dome.</div>
+    </div>
+    <div class="faq-card">
+      <div class="faq-question">🦥 Is this school for humans only?</div>
+      <div class="faq-answer">No, it’s open to AI, uplifted animals, and peaceful alien species.</div>
+    </div>
+    <div class="faq-card">
+      <div class="faq-question">🎯 Can students control their learning pace?</div>
+      <div class="faq-answer">Students can speed up or slow down their learning via quantum feedback systems.</div>
+    </div>
+    <div class="faq-card">
+      <div class="faq-question">🏖️ Are there school holidays?</div>
+      <div class="faq-answer">Holidays follow intergalactic events and cosmic cycles, not traditional calendars.</div>
+    </div>
+  </div>
+  <br><br><br>
+
+    <!-- Dropdown-->
+  <h2 class="section-heading" id="qualities"> <br><br> What Makes a Child of the Future</h2><br>
+  <div class="tips-container">
+    <div class="tip">
+      Adaptable
+        <div class="dropdown-content">
+            <p><i>Adept to adjust, quicker to evolve in a world that does not remain static.</i></p>
+        </div>
+    </div>
+    <div class="tip">
+      Emotional Wisdom
+        <div class="dropdown-content">
+            <p><i>Empathy is their superpower, connection their strength.</i></p>
+        </div>
+    </div>
+    <div class="tip">
+      Tech-Native Thinkers
+        <div class="dropdown-content">
+            <p><i>They code, build, and master technology like second nature.</i></p>
+        </div>
+    </div>
+    <div class="tip">
+      Ethical Awareness
+        <div class="dropdown-content">
+            <p><i>Values-driven, they innovate with a conscience.</i></p>
+        </div>
+    </div>
+    <div class="tip">
+      Global Collaboration
+        <div class="dropdown-content">
+            <p><i>Partners in progress—where borders are merely bandwidth.</i></p>
+        </div>
+    </div>
+    <div class="tip">
+      Cognitive Augmentation
+        <div class="dropdown-content">
+            <p><i>Minds powered by AI, concentrated by design.</i></p>
+        </div>
+    </div>
+    <div class="tip">
+      Time-Smart
+        <div class="dropdown-content">
+            <p><i>Master time with concentration, flow, and digital tools.</i></p>
+        </div>
+    </div>
+    <div class="tip">
+      Holistic Wellness
+        <div class="dropdown-content">
+            <p><i>Mindful balance of minds, bodies, and digital lives.</i></p>
+        </div>
+    </div>
+    <div class="tip">
+      Multimodal Expression
+        <div class="dropdown-content">
+            <p><i>They communicate through code, art, voice, and virtuality.</i></p>
+        </div>
+    </div>
+    <div class="tip">
+      Resilient
+        <div class="dropdown-content">
+            <p><i>Bounce back stronger, regardless of challenge.</i></p>
+        </div>
+    </div>
+    <div class="tip">
+      Interdisciplinary
+        <div class="dropdown-content">
+            <p><i>Combine science, art, and technology to address global challenges.</i></p>
+        </div>
+    </div>
+    <div class="tip">
+      Eco-Conscious
+        <div class="dropdown-content">
+            <p><i>Live green, think clean, act sustainably.</i></p>
+        </div>
+    </div>
+</div><br><br><br><br><br>
+
+  <!--Videos-->
+  <h1 class="section-heading">Explore Our Quantum Classrooms in Motion</h1>
+  <div class="video-container">
+    <video width=40% height=400  src="vid1.mp4" frameborder="0" muted allowfullscreen autoplay loop class="vid"></video>
+    <video width=40% height=400  src="vid2.mp4" frameborder="0" muted allowfullscreen autoplay loop class="vid"></video>
+  </div>
+
+  <!-- Dream Cource Finder -->
+  <section id="dream-filter-container">
+    <div class="container">
+        <header>
+            <h1>Dream-Based Program Filter</h1>
+            <p>Type your dream or interests to find courses that match your aspirations.</p><br>
+        </header>
+        <div class="search-section">
+            <input type="text" id="dreamInput" placeholder="Describe your dream..." />
+            <button class="button" onclick="filterCourses()">Find Courses</button>
+            <br><br><button class="button" onclick="clearResults()"> Clear</button> <!-- Clear button next to search -->
+        </div>
+
+        <div class="course-results" id="courseResults"></div><br><br>
+
+        <div class="sample-text">
+            <h2>Example Interest Statements</h2>
+            <ul>
+                <li>"I’m interested in learning more about <strong>nanotechnology</strong> and how it’s used in <strong>engineering</strong> to create innovative <strong>smart materials</strong>."</li><br><br>
+                <li>"My child is really passionate about <strong>cybersecurity</strong> and wants to understand how to protect <strong>personal information</strong> and tackle <strong>data privacy</strong> issues in today’s digital world."</li><br><br>
+                <li>"I’d like my daughter to explore <strong>space habitats</strong> and how <strong>astronauts</strong> can live and work in <strong>deep space</strong> for extended periods of time, especially for future <strong>colonization</strong>."</li><br><br>
+                <li>"I’m fascinated by the potential of <strong>genetic engineering</strong> and how <strong>CRISPR</strong> technology can be used to edit <strong>DNA</strong> and possibly cure genetic diseases."</li><br><br>
+                <li>"I’m looking for a program that combines <strong>virtual reality</strong> with <strong>mental health</strong> therapy to help improve overall <strong>wellness</strong> and emotional well-being."</li><br><br>
+            </ul>
+        </div>
+    </div>
+  </section><br><br><br><br>
+
+
+  <!-- Contact -->
+  <div class="socials-container">
+    <a data-social="Twitter" style="--accent-color: black;" href="https://x.com/">
+      <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>X</title><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+    </a>
+    <a data-social="YouTube" style="--accent-color: red;" href="https://www.youtube.com/">
+      <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>YouTube</title><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    </a>
+    <a data-social="Instagram" style="--accent-color: #fe107c;" href="https://www.instagram.com/">
+      <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>
+    </a>
+    <a data-social="Facebook" style="--accent-color: #106bff;" href="https://www.facebook.com/">
+      <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2050 NeoAcademy — Empowering the Next Galactic Generation
+  </footer>
+
+<script>
+
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      const maskLayer = document.querySelector('.mask-layer');
+      if (maskLayer) {
+        maskLayer.classList.add('mask-on');
+      }
+    }, 5200);
+  });
+
+  const courses = [
+  { name: 'Astrophysics & Cosmic Studies', keywords: ['space', 'stars', 'universe', 'galaxy'] },
+  { name: 'Artificial Intelligence Engineering', keywords: ['robot', 'AI', 'technology', 'machine learning'] },
+  { name: 'Time Travel Theory & Practical Applications', keywords: ['time', 'paradox', 'travel', 'dimension'] },
+  { name: 'Quantum Biology', keywords: ['quantum', 'biology', 'life', 'cells'] },
+  { name: 'Neuro-Linguistic Programming', keywords: ['brain', 'mind', 'psychology', 'communication'] },
+  { name: 'Augmented Reality Design', keywords: ['virtual', 'AR', 'technology', 'design'] },
+  { name: 'Bioengineering of Advanced Organisms', keywords: ['bioengineering', 'genetics', 'cells', 'cloning'] },
+  { name: 'Sustainable Energy & Green Technologies', keywords: ['energy', 'green', 'sustainability', 'renewable'] },
+  { name: 'Nanotechnology & Smart Materials', keywords: ['nanotech', 'materials', 'science', 'engineering'] },
+  { name: 'Cybersecurity & Data Privacy', keywords: ['cybersecurity', 'data', 'privacy', 'protection'] },
+  { name: 'Space Habitat Design & Engineering', keywords: ['space', 'habitat', 'engineering', 'astronaut'] },
+  { name: 'Human Augmentation & Robotics', keywords: ['augmentation', 'robots', 'cybernetics', 'bionics'] },
+  { name: 'Advanced Neuroscience & Brain-Machine Interfaces', keywords: ['neuroscience', 'brain', 'machine', 'interface'] },
+  { name: 'Smart Cities & Urban Planning', keywords: ['smart cities', 'urban', 'planning', 'sustainability'] },
+  { name: 'Deep Space Exploration & Colonization', keywords: ['space', 'exploration', 'colonization', 'future'] },
+  { name: 'Genetic Engineering & CRISPR Technology', keywords: ['genetics', 'CRISPR', 'DNA', 'engineering'] },
+  { name: 'Virtual Reality Therapy & Wellness', keywords: ['VR', 'therapy', 'wellness', 'mental health'] },
+  { name: 'Blockchain & Cryptocurrency Development', keywords: ['blockchain', 'cryptocurrency', 'technology', 'finance'] },
+  { name: 'Bioinformatics & Personalized Medicine', keywords: ['bioinformatics', 'medicine', 'genomics', 'healthcare'] },
+  { name: 'Autonomous Vehicle Design & Engineering', keywords: ['autonomous', 'vehicles', 'design', 'engineering'] },
+  { name: 'Artificial Consciousness & Ethics', keywords: ['AI', 'consciousness', 'ethics', 'philosophy'] },
+  { name: 'Digital Art & Animation in Virtual Worlds', keywords: ['digital art', 'animation', 'VR', 'creativity'] },
+  { name: 'Astrobiology & Extraterrestrial Life', keywords: ['astrobiology', 'extraterrestrial', 'life', 'planets'] }
+];
+
+
+function filterCourses() {
+  const input = document.getElementById('dreamInput').value.toLowerCase();
+  const resultsDiv = document.getElementById('courseResults');
+  
+  resultsDiv.innerHTML = '';
+
+  const filteredCourses = courses.filter(course => 
+    course.keywords.some(keyword => input.includes(keyword.toLowerCase()))
+  );
+
+  if (filteredCourses.length === 0) {
+    resultsDiv.innerHTML = '<p>No matching courses found. Try something different!</p>';
+  } else {
+    filteredCourses.forEach(course => {
+      const courseElement = document.createElement('div');
+      courseElement.classList.add('course');
+      courseElement.innerHTML = `<h3>${course.name}</h3><p>Explore this field in depth and make your mark on the future!</p>`;
+      resultsDiv.appendChild(courseElement);
+    });
+  }
+}
+
+  function clearResults() {
+      // Clear the input field
+      document.getElementById('dreamInput').value = '';
+
+      // Clear the course results
+      document.getElementById('courseResults').innerHTML = '';
+    }
+
+
+      const cursor = document.querySelector('.cursor');
+
+  document.addEventListener('mousemove', e => {
+      cursor.setAttribute("style", "top: "+(e.pageY - 10)+"px; left: "+(e.pageX - 10)+"px;")
+  })
+
+  document.addEventListener('click', () => {
+      cursor.classList.add("expand");
+
+      setTimeout(() => {
+          cursor.classList.remove("expand");
+      }, 500)
+  })
+
+</script>
+
+</body>
+</html>

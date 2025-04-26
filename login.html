@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NeoLogin Portal</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 1rem;
+      padding: 2rem;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+      text-align: center;
+      position: relative;
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      text-shadow: 0 0 8px #0ff;
+    }
+
+    input {
+      width: 90%;
+      padding: 0.8rem;
+      margin: 0.6rem 0;
+      border: none;
+      border-radius: 0.5rem;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: background 0.3s;
+    }
+
+    input:focus {
+      background: rgba(0, 255, 255, 0.15);
+      box-shadow: 0 0 10px #00f7ff;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.8rem 2.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: #00f7ff;
+      color: #000;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff inset;
+    }
+
+    button:hover {
+      background-color: #00d8e8;
+      transform: scale(1.05);
+    }
+
+    .toggle {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #ccc;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .error {
+      color: #ff4f6d;
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .glow-border {
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px #00f7ff, 0 0 40px #00f7ff inset;
+      opacity: 0.2;
+      z-index: -1;
+      pointer-events: none;
+      animation: pulseGlow 4s infinite alternate ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0% { opacity: 0.2; box-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff inset; }
+      100% { opacity: 0.4; box-shadow: 0 0 30px #00f7ff, 0 0 60px #00f7ff inset; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="glow-border"></div>
+    <h2 id="form-title">🚀 Sign Up for NeoAccess</h2>
+
+    <form id="signup-form">
+      <input type="text" id="signup-username" placeholder="Username" required />
+      <input type="email" id="signup-email" placeholder="Email" required />
+      <input type="password" id="signup-password" placeholder="Password" required />
+      <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required />
+      <div id="signup-error" class="error"></div>
+      <button type="submit">Enter Future</button>
+    </form>
+
+    <form id="login-form" class="hidden">
+      <input type="email" id="login-email" placeholder="Email" required />
+      <input type="password" id="login-password" placeholder="Password" required />
+      <div id="login-error" class="error"></div>
+      <button type="submit">Login to Portal</button>
+    </form>
+
+    <div class="toggle" onclick="toggleForm()">🔁 Switch to Login</div>
+  </div>
+
+  <script>
+    const signupForm = document.getElementById('signup-form');
+    const loginForm = document.getElementById('login-form');
+    const formTitle = document.getElementById('form-title');
+    const toggleText = document.querySelector('.toggle');
+
+    function toggleForm() {
+      signupForm.classList.toggle('hidden');
+      loginForm.classList.toggle('hidden');
+      if (signupForm.classList.contains('hidden')) {
+        formTitle.textContent = '🧠 Login to NeoAccess';
+        toggleText.textContent = '🪐 Switch to Signup';
+      } else {
+        formTitle.textContent = '🚀 Sign Up for NeoAccess';
+        toggleText.textContent = '🔁 Switch to Login';
+      }
+    }
+
+    signupForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('signup-username').value.trim();
+      const email = document.getElementById('signup-email').value.trim();
+      const password = document.getElementById('signup-password').value;
+      const confirmPassword = document.getElementById('signup-confirm-password').value;
+      const errorDiv = document.getElementById('signup-error');
+
+      if (username.length < 3) {
+        errorDiv.textContent = "🛑 Username must be at least 3 characters.";
+        return;
+      }
+      if (!email.includes('@') || !email.includes('.')) {
+        errorDiv.textContent = "📧 Invalid email format.";
+        return;
+      }
+      if (password.length < 6) {
+        errorDiv.textContent = "🔒 Password must be at least 6 characters.";
+        return;
+      }
+      if (password !== confirmPassword) {
+        errorDiv.textContent = "❗ Passwords do not match.";
+        return;
+      }
+
+      errorDiv.textContent = "";
+      window.location.href = "index.html";
+    });
+
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const password = document.getElementById('login-password').value;
+      const errorDiv = document.getElementById('login-error');
+
+      if (!email || !password) {
+        errorDiv.textContent = "⚠️ Email and password required.";
+        return;
+      }
+
+      errorDiv.textContent = "";
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>
