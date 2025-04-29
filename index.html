@@ -15,12 +15,35 @@
       href="https://fonts.googleapis.com/css2?family=Foldit:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+    @font-face {
+      font-family: Glitch ;
+      src: url(Mokoto\ Demo.ttf) format("truetype");
+    }
+
+    @font-face {
+      font-family: nav ;
+      src: url(Montserrat-Bold.ttf) format("truetype");
+    }
+
+    @font-face {
+      font-family: splash ;
+      src: url(NCLMonsterBeast-Demo.otf) format("opentype");
+    }
+
+    *{
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Playfair Display', sans-serif;
       background: #000000ea;
       background-size: 600% 600%;
       animation: spaceFlow 60s ease infinite;
@@ -72,6 +95,7 @@
     nav a {
       color: #00f2ff;
       text-decoration: none;
+      font-family: nav;
       font-weight: bold;
       font-size: 1.1rem;
       transition: color 0.3s ease;
@@ -895,7 +919,6 @@
     background-size: cover;
     background-position: center;
     z-index: -1;
-    /* No mask by default */
 }
 
 .mask-on {
@@ -904,7 +927,6 @@
     mask-position: center;
     mask-repeat: no-repeat;
     mask-mode: alpha;
-    /* WebKit support */
     -webkit-mask-image: url(effect.gif);
     -webkit-mask-size: cover;
     -webkit-mask-position: center;
@@ -913,7 +935,7 @@
 }
 
 .ebanner .content .title {
-    font-family: 'Hallowed Grounds', sans-serif;
+    font-family: Glitch;
     font-size: 9em;
     color: #09A6F3;
     margin-top: 4rem;
@@ -994,20 +1016,18 @@
 
     .line {
       position: absolute;
-      height: 2px;
+      height: 4px;
       background: white;
-      /* width: 0; */
       animation: expandLine 0.7s ease forwards,
-        contractLine 0.7s ease forwards 5s;
+      contractLine 0.7s ease forwards 5s;
     }
 
     .splash-text {
       overflow: hidden;
       position: relative;
       color: white;
-      font-family: "Circular", sans-serif;
+      font-family: splash;
       font-size: 2rem;
-      font-size: clamp(1rem, -0.056rem + 4.507vw, 3rem);
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -1248,6 +1268,7 @@
     transition-timing-function: ease-out;
     animation: cursorAnim .5s infinite alternate;
     pointer-events: none;
+    z-index: 100000000000000;
   }
 
     .cursor::after {
@@ -1751,9 +1772,9 @@
             <p>Type your dream or interests to find courses that match your aspirations.</p><br>
         </header>
         <div class="search-section">
-            <input type="text" id="dreamInput" placeholder="Describe your dream..." />
+            <input type="text" id="dreamInput" placeholder="Describe your dream...." />
             <button class="button" onclick="filterCourses()">Find Courses</button>
-            <br><br><button class="button" onclick="clearResults()"> Clear</button> <!-- Clear button next to search -->
+            <br><br><button class="button" onclick="clearResults()"> Clear</button> 
         </div>
 
         <div class="course-results" id="courseResults"></div><br><br>
@@ -1761,9 +1782,9 @@
         <div class="sample-text">
             <h2>Example Interest Statements</h2>
             <ul>
-                <li>"I’m interested in learning more about <strong>nanotechnology</strong> and how it’s used in <strong>engineering</strong> to create innovative <strong>smart materials</strong>."</li><br><br>
+                <li>"I’m interested in learning more about <strong>nanotechnology</strong> and how it’s used in <strong>engineering</strong> to create innovative <strong>smart materials</strong></li><br><br>
                 <li>"My child is really passionate about <strong>cybersecurity</strong> and wants to understand how to protect <strong>personal information</strong> and tackle <strong>data privacy</strong> issues in today’s digital world."</li><br><br>
-                <li>"I’d like my daughter to explore <strong>space habitats</strong> and how <strong>astronauts</strong> can live and work in <strong>deep space</strong> for extended periods of time, especially for future <strong>colonization</strong>."</li><br><br>
+                <li>"I’d like my daughter to explore <strong>space habitats</strong> and how <strong>astronauts</strong> can live and work in <strong>deep space</strong> for extended periods of time, especially for future <strong>colonization</strong></li><br><br>
                 <li>"I’m fascinated by the potential of <strong>genetic engineering</strong> and how <strong>CRISPR</strong> technology can be used to edit <strong>DNA</strong> and possibly cure genetic diseases."</li><br><br>
                 <li>"I’m looking for a program that combines <strong>virtual reality</strong> with <strong>mental health</strong> therapy to help improve overall <strong>wellness</strong> and emotional well-being."</li><br><br>
             </ul>
