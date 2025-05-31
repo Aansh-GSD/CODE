@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NeoAcademy 2050</title>
   <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
   <link
@@ -1128,7 +1129,7 @@
       height: 90%;
       transform: translateX(-50%);
       content: '';
-      background-image: url(images/bg.png);
+      background-image: url(bg.png);
       background-size: 100%;
       background-repeat: no-repeat;
       background-position: top center;
@@ -1320,6 +1321,95 @@
         border: 1px solid red;
     }
 
+    @media screen and (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  nav a {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+
+  .banner .content h1 {
+    font-size: 5em;
+    text-align: center;
+  }
+
+  .banner .content .right h2 {
+    font-size: 2.5em;
+    text-align: center;
+  }
+
+  .banner .image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .video-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .video-container > video {
+    width: 90% !important;
+    height: auto !important;
+  }
+
+  .card, .anicard, .mentor-card, .achievement-card, .faq-card {
+    width: 90%;
+  }
+
+  .course {
+    width: 90%;
+  }
+
+  .gridd {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .gridd-3 div {
+    font-size: 2em !important;
+    text-align: center;
+    word-break: break-word;
+  }
+
+  .cbanner .ccontent h1 {
+    font-size: 4em !important;
+  }
+
+  .title {
+    font-size: 3em !important;
+  }
+
+  .box {
+    width: 90% !important;
+    height: auto !important;
+  }
+
+  .headphone, .bg {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .search-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-section input, .search-section button {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .socials-container {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
 
   </style>
 </head>
